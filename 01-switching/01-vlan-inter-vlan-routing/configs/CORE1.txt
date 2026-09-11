@@ -1,0 +1,118 @@
+! =====================================================
+! CORE1 - Layer 3 Core Switch
+! Enterprise VLAN & Inter-VLAN Routing Lab
+! =====================================================
+
+hostname CORE1
+
+ip routing
+
+! -----------------------------------------------------
+! VLANs
+! -----------------------------------------------------
+
+vlan 10
+ name MANAGEMENT
+
+vlan 20
+ name USERS
+
+vlan 30
+ name SERVERS
+
+vlan 40
+ name GUEST
+
+vlan 99
+ name NATIVE
+
+
+! -----------------------------------------------------
+! 802.1Q Trunks
+! -----------------------------------------------------
+
+interface FastEthernet0/1
+ description TRUNK_TO_SW1
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10,20,30,40,99
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+
+interface FastEthernet0/2
+ description TRUNK_TO_SW2
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10,20,30,40,99
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+
+
+! -----------------------------------------------------
+! Layer 3 uplink to edge router
+! -----------------------------------------------------
+
+interface GigabitEthernet0/1
+ description ROUTED_LINK_TO_R1
+ no switchport
+ ip address 10.10.254.2 255.255.255.252
+
+
+! -----------------------------------------------------
+! Switched Virtual Interfaces
+! -----------------------------------------------------
+
+interface Vlan10
+ description MANAGEMENT_GATEWAY
+ ip address 10.10.10.1 255.255.255.0
+
+interface Vlan20
+ description USERS_GATEWAY
+ ip address 10.10.20.1 255.255.255.0
+
+interface Vlan30
+ description SERVERS_GATEWAY
+ ip address 10.10.30.1 255.255.255.0
+
+interface Vlan40
+ description GUEST_GATEWAY
+ ip address 10.10.40.1 255.255.255.0
+ ip access-group GUEST-ISOLATION in
+
+
+! -----------------------------------------------------
+! Guest VLAN isolation
+! -----------------------------------------------------
+
+ip access-list extended GUEST-ISOLATION
+ deny ip 10.10.40.0 0.0.0.255 10.10.10.0 0.0.0.255
+ deny ip 10.10.40.0 0.0.0.255 10.10.20.0 0.0.0.255
+ deny ip 10.10.40.0 0.0.0.255 10.10.30.0 0.0.0.255
+ permit ip 10.10.40.0 0.0.0.255 any
+
+
+! -----------------------------------------------------
+! Default route toward edge router
+! -----------------------------------------------------
+
+ip route 0.0.0.0 0.0.0.0 10.10.254.1
+
+
+! -----------------------------------------------------
+! Secure management
+! -----------------------------------------------------
+
+ip domain-name lab.local
+ip ssh version 2
+
+username netadmin privilege 15 secret <REDACTED>
+
+ip access-list standard SSH-MANAGEMENT
+ permit 10.10.10.0 0.0.0.255
+ deny any
+
+line vty 0 15
+ login local
+ transport input ssh
+ access-class SSH-MANAGEMENT in
+ exec-timeout 10 0
+
+end
