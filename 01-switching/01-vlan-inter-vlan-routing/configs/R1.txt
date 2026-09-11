@@ -1,0 +1,49 @@
+! =====================================================
+! Device: R1
+! Role: Edge Router / NAT Gateway
+! Project: Enterprise VLAN Segmentation & Inter-VLAN Routing
+! Platform: Cisco 2911 / Packet Tracer
+! =====================================================
+
+hostname R1
+
+ip cef
+
+
+! -----------------------------------------------------
+! Internal Routed Link to CORE1
+! -----------------------------------------------------
+
+interface GigabitEthernet0/0
+ description ROUTED_LINK_TO_CORE1
+ ip address 10.10.254.1 255.255.255.252
+ ip nat inside
+
+
+! -----------------------------------------------------
+! External Link to ISP
+! -----------------------------------------------------
+
+interface GigabitEthernet0/1
+ description LINK_TO_ISP
+ ip address 203.0.113.1 255.255.255.252
+ ip nat outside
+
+
+! -----------------------------------------------------
+! Static Routing
+! -----------------------------------------------------
+
+ip route 10.10.0.0 255.255.0.0 10.10.254.2
+ip route 0.0.0.0 0.0.0.0 203.0.113.2
+
+
+! -----------------------------------------------------
+! NAT / PAT
+! -----------------------------------------------------
+
+access-list 1 permit 10.10.0.0 0.0.255.255
+
+ip nat inside source list 1 interface GigabitEthernet0/1 overload
+
+end
