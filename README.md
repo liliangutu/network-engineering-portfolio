@@ -54,6 +54,26 @@ Key features:
 
 ---
 
+### 02 — Multi-Area OSPF Routing & Troubleshooting
+
+[View Project](02-routing/01-multi-area-ospf/)
+
+Enterprise-style multi-area OSPF network implementing hierarchical routing, inter-area summarization, and external connectivity through a simulated ISP.
+
+**Technologies:** OSPFv2 · Multi-Area Routing · ABR · ASBR · Route Summarization · Type-3/4/5 LSAs · Default Route Origination · Routing Troubleshooting
+
+Key features:
+
+- Three-area OSPF architecture (Areas 0, 10, and 20)
+- Five internal routers with dedicated ABR and ASBR roles
+- OSPF neighbor adjacency establishment and verification
+- Inter-area route summarization using /22 prefixes
+- External default-route propagation using OSPF E2 routes
+- Link-State Database analysis covering Type-3, Type-4, and Type-5 LSAs
+- End-to-end connectivity between internal LANs and an external server
+- Four documented troubleshooting scenarios with root-cause analysis and corrective actions
+- Device configurations, verification results, topology diagram, and Cisco Packet Tracer lab
+
 ## Technology Areas
 
 The portfolio is organized around several network engineering disciplines:
@@ -104,20 +124,25 @@ Planned automation projects will include:
 - Network state validation
 
 ---
-
 ## Repository Structure
 
 ```text
 network-engineering-portfolio/
 │
 ├── 01-switching/
+│   └── 01-vlan-inter-vlan-routing/
+│
 ├── 02-routing/
-├── 03-network-security/
-├── 04-troubleshooting/
-├── 05-network-automation/
-├── 06-real-world-projects/
-└── 07-documentation/
+│   └── 01-multi-area-ospf/
+│
+├── 03-network-security/       # Planned
+├── 04-troubleshooting/        # Planned
+├── 05-network-automation/     # Planned
+├── 06-real-world-projects/    # Planned
+└── 07-documentation/          # Planned
 ```
+
+The portfolio currently includes two documented hands-on networking projects, with additional enterprise routing, security, troubleshooting, and automation labs planned.
 
 The repository will grow progressively as additional enterprise networking, security, automation, and advanced routing projects are completed.
 
@@ -135,7 +160,7 @@ The repository will grow progressively as additional enterprise networking, secu
 
 My current development focus is on advancing from core enterprise networking into:
 
-- Advanced OSPF
+- Advanced OSPF optimization and troubleshooting
 - Network resiliency and redundancy
 - Route filtering and redistribution
 - BGP
