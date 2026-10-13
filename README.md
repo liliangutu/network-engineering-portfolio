@@ -65,7 +65,7 @@ Enterprise-style multi-area OSPF network implementing hierarchical routing, inte
 Key features:
 
 - Three-area OSPF architecture (Areas 0, 10, and 20)
-- Five internal routers with dedicated ABR and ASBR roles
+- Five internal routers, including two ABRs and one ASBR
 - OSPF neighbor adjacency establishment and verification
 - Inter-area route summarization using /22 prefixes
 - External default-route propagation using OSPF E2 routes
@@ -73,7 +73,8 @@ Key features:
 - End-to-end connectivity between internal LANs and an external server
 - Four documented troubleshooting scenarios with root-cause analysis and corrective actions
 - Device configurations, verification results, topology diagram, and Cisco Packet Tracer lab
-
+  
+---
 ## Technology Areas
 
 The portfolio is organized around several network engineering disciplines:
@@ -143,8 +144,6 @@ network-engineering-portfolio/
 ```
 
 The portfolio currently includes two documented hands-on networking projects, with additional enterprise routing, security, troubleshooting, and automation labs planned.
-
-The repository will grow progressively as additional enterprise networking, security, automation, and advanced routing projects are completed.
 
 ---
 
