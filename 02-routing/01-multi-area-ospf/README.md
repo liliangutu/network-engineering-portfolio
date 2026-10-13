@@ -112,11 +112,11 @@ Detailed scenarios are documented in [troubleshooting/troubleshooting.md](troubl
 
 ## Project Files
 
-- `multi-area-ospf.pkt` — Cisco Packet Tracer lab
-- `topology.png` — Network topology diagram
-- `configs/` — Device configurations
-- `verification/` — Routing and connectivity verification
-- `troubleshooting/` — Fault scenarios and resolutions
+- [Cisco Packet Tracer Lab](multi-area-ospf.pkt) — Complete multi-area OSPF topology and configurations
+- [Network Topology](topology.png) — Visual representation of OSPF areas, router roles, and network segments
+- [Device Configurations](configs/) — Sanitized configurations for R1–R5 and ISP
+- [Verification and Testing](verification/verification.md) — OSPF adjacencies, routing tables, LSA analysis, summarization, and connectivity validation
+- [Troubleshooting Scenarios](troubleshooting/troubleshooting.md) — Four configuration faults, root-cause analysis, corrective actions, and validation
 
 ## Key Takeaways
 
