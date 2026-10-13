@@ -1,0 +1,32 @@
+
+!
+! R2 - OSPF Area Border Router (ABR)
+! Connects Area 10 to Backbone Area 0
+! Multi-Area OSPF Routing & Troubleshooting Lab
+!
+hostname R2
+!
+ip cef
+!
+interface Loopback0
+ ip address 2.2.2.2 255.255.255.255
+ ip ospf 10 area 0
+!
+interface GigabitEthernet0/0
+ description LINK_TO_R1_AREA10
+ ip address 10.10.255.2 255.255.255.252
+ ip ospf 10 area 10
+ no shutdown
+!
+interface GigabitEthernet0/1
+ description LINK_TO_R3_AREA0
+ ip address 10.0.0.1 255.255.255.252
+ ip ospf 10 area 0
+ no shutdown
+!
+router ospf 10
+ router-id 2.2.2.2
+ log-adjacency-changes
+ area 10 range 10.10.8.0 255.255.252.0
+!
+end
