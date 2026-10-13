@@ -1,0 +1,39 @@
+
+!
+! R3 - OSPF Autonomous System Boundary Router (ASBR)
+! Backbone Area 0 and External ISP Connectivity
+! Multi-Area OSPF Routing & Troubleshooting Lab
+!
+hostname R3
+!
+ip cef
+!
+interface Loopback0
+ ip address 3.3.3.3 255.255.255.255
+ ip ospf 10 area 0
+!
+interface GigabitEthernet0/0
+ description LINK_TO_R4_AREA0
+ ip address 10.0.0.5 255.255.255.252
+ ip ospf 10 area 0
+ no shutdown
+!
+interface GigabitEthernet0/1
+ description LINK_TO_R2_AREA0
+ ip address 10.0.0.2 255.255.255.252
+ ip ospf 10 area 0
+ no shutdown
+!
+interface GigabitEthernet0/2
+ description LINK_TO_ISP
+ ip address 203.0.113.1 255.255.255.252
+ no shutdown
+!
+router ospf 10
+ router-id 3.3.3.3
+ log-adjacency-changes
+ default-information originate
+!
+ip route 0.0.0.0 0.0.0.0 203.0.113.2
+!
+end
