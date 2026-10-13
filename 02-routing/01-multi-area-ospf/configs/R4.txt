@@ -1,0 +1,32 @@
+
+!
+! R4 - OSPF Area Border Router (ABR)
+! Connects Backbone Area 0 to Area 20
+! Multi-Area OSPF Routing & Troubleshooting Lab
+!
+hostname R4
+!
+ip cef
+!
+interface Loopback0
+ ip address 4.4.4.4 255.255.255.255
+ ip ospf 10 area 0
+!
+interface GigabitEthernet0/0
+ description LINK_TO_R5_AREA20
+ ip address 10.20.255.1 255.255.255.252
+ ip ospf 10 area 20
+ no shutdown
+!
+interface GigabitEthernet0/1
+ description LINK_TO_R3_AREA0
+ ip address 10.0.0.6 255.255.255.252
+ ip ospf 10 area 0
+ no shutdown
+!
+router ospf 10
+ router-id 4.4.4.4
+ log-adjacency-changes
+ area 20 range 10.20.8.0 255.255.252.0
+!
+end
