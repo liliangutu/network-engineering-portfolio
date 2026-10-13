@@ -1,0 +1,46 @@
+
+!
+! R5 - OSPF Area 20 Internal Router
+! Multi-Area OSPF Routing & Troubleshooting Lab
+!
+hostname R5
+!
+ip cef
+!
+interface Loopback0
+ ip address 5.5.5.5 255.255.255.255
+ ip ospf 10 area 20
+!
+interface Loopback10
+ description AREA20_USERS
+ ip address 10.20.8.1 255.255.255.0
+ ip ospf 10 area 20
+!
+interface Loopback11
+ description AREA20_VOICE
+ ip address 10.20.9.1 255.255.255.0
+ ip ospf 10 area 20
+!
+interface Loopback12
+ description AREA20_SERVERS
+ ip address 10.20.11.1 255.255.255.0
+ ip ospf 10 area 20
+!
+interface GigabitEthernet0/0
+ description LINK_TO_LAN-B
+ ip address 10.20.10.1 255.255.255.0
+ ip ospf 10 area 20
+ no shutdown
+!
+interface GigabitEthernet0/1
+ description LINK_TO_R4_AREA20
+ ip address 10.20.255.2 255.255.255.252
+ ip ospf 10 area 20
+ no shutdown
+!
+router ospf 10
+ router-id 5.5.5.5
+ log-adjacency-changes
+ passive-interface GigabitEthernet0/0
+!
+end
