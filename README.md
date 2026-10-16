@@ -73,7 +73,21 @@ Key features:
 - End-to-end connectivity between internal LANs and an external server
 - Four documented troubleshooting scenarios with root-cause analysis and corrective actions
 - Device configurations, verification results, topology diagram, and Cisco Packet Tracer lab
-  
+
+### 03 — EtherChannel & STP Redundancy
+
+**Technologies:** Cisco IOS, LACP, EtherChannel, Rapid PVST+, VLAN Trunking
+
+Designed and configured an enterprise-style Layer 2 topology with redundant distribution and access switch connections.
+
+- Configured LACP EtherChannel between two distribution switches.
+- Implemented Rapid PVST+ with primary and secondary root bridges.
+- Verified VLAN trunking and end-to-end connectivity.
+- Successfully tested EtherChannel failover by disabling a physical member link.
+- Investigated and documented inconsistent STP behavior in Cisco Packet Tracer.
+
+**[View Project](01-switching/02-etherchannel-stp-redundancy/README.md)**
+
 ---
 ## Technology Areas
 
