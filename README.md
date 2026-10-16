@@ -74,21 +74,30 @@ Key features:
 - Four documented troubleshooting scenarios with root-cause analysis and corrective actions
 - Device configurations, verification results, topology diagram, and Cisco Packet Tracer lab
 
+---
+
 ### 03 — EtherChannel & STP Redundancy
 
-**Technologies:** Cisco IOS, LACP, EtherChannel, Rapid PVST+, VLAN Trunking
+[View Project](01-switching/02-etherchannel-stp-redundancy/)
 
-Designed and configured an enterprise-style Layer 2 topology with redundant distribution and access switch connections.
+Enterprise-style Layer 2 switching topology implementing link aggregation, loop prevention, and redundant connectivity across distribution and access switches.
 
-- Configured LACP EtherChannel between two distribution switches.
-- Implemented Rapid PVST+ with primary and secondary root bridges.
-- Verified VLAN trunking and end-to-end connectivity.
-- Successfully tested EtherChannel failover by disabling a physical member link.
-- Investigated and documented inconsistent STP behavior in Cisco Packet Tracer.
+**Technologies:** Cisco IOS · LACP · EtherChannel · Rapid PVST+ · 802.1Q Trunking · Layer 2 Redundancy · Switching Troubleshooting
 
-**[View Project](01-switching/02-etherchannel-stp-redundancy/README.md)**
+Key features:
+
+- Two distribution switches and three interconnected access switches
+- LACP EtherChannel using two Gigabit Ethernet links
+- VLAN trunking for Users, Servers, Guest, and Management networks
+- Rapid PVST+ with primary and secondary root bridges
+- Spanning Tree path selection and loop prevention
+- End-to-end connectivity verification across the switching topology
+- Successful EtherChannel member-link failover testing
+- Systematic troubleshooting of inconsistent STP behavior observed in Cisco Packet Tracer
+- Device configurations, topology file, verification screenshots, and documented test results
 
 ---
+
 ## Technology Areas
 
 The portfolio is organized around several network engineering disciplines:
@@ -97,9 +106,11 @@ The portfolio is organized around several network engineering disciplines:
 
 - VLAN design and segmentation
 - 802.1Q trunking
-- Spanning Tree Protocol
-- EtherChannel
-- Layer 2 resiliency
+- Inter-VLAN routing
+- Rapid PVST+ and root bridge selection
+- LACP EtherChannel
+- Layer 2 redundancy and failover testing
+- Spanning Tree troubleshooting
 
 ### Routing
 
@@ -145,7 +156,8 @@ Planned automation projects will include:
 network-engineering-portfolio/
 │
 ├── 01-switching/
-│   └── 01-vlan-inter-vlan-routing/
+│   ├── 01-vlan-inter-vlan-routing/
+│   └── 02-etherchannel-stp-redundancy/
 │
 ├── 02-routing/
 │   └── 01-multi-area-ospf/
@@ -157,7 +169,9 @@ network-engineering-portfolio/
 └── 07-documentation/          # Planned
 ```
 
-The portfolio currently includes two documented hands-on networking projects, with additional enterprise routing, security, troubleshooting, and automation labs planned.
+The portfolio currently includes **three documented hands-on networking projects**, covering enterprise switching, multi-area routing, Layer 2 redundancy, and structured troubleshooting.
+
+Additional projects focused on network security, advanced routing, automation, and enterprise infrastructure are planned.
 
 ---
 
