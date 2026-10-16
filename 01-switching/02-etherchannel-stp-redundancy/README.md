@@ -87,6 +87,30 @@ After reopening the saved lab, the EtherChannel and STP behavior stabilized. The
 - `topology/` — Cisco Packet Tracer lab file
 - `screenshots/` — Verification and testing evidence
 
+## Lab Screenshots
+
+### Network Topology
+
+![Network Topology](screenshots/01-network-topology.png)
+
+### LACP Verification
+
+Both physical interfaces are successfully bundled into Port-channel1 using LACP.
+
+![LACP Verification](screenshots/02-lacp-verification.png)
+
+### Spanning Tree Verification
+
+DIST1 is the primary root bridge for VLAN 10, and DIST2 reaches the root through Port-channel1.
+
+![STP Verification](screenshots/03-stp-verification.png)
+
+### EtherChannel Failover Test
+
+One EtherChannel member was administratively disabled to simulate a link failure. Port-channel1 remained operational through the remaining member, and end-to-end connectivity was maintained.
+
+![EtherChannel Failover](screenshots/04-etherchannel-failover.png)
+
 ## Key Takeaways
 
 This lab demonstrates practical LACP configuration, Rapid PVST+ operation, Layer 2 redundancy testing, and systematic troubleshooting of switching behavior.
