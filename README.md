@@ -118,8 +118,6 @@ The portfolio is organized around several network engineering disciplines:
 - Static and default routing
 - OSPF
 - Route summarization
-- Route filtering and redistribution
-- BGP
 
 ### Network Security
 
@@ -172,6 +170,8 @@ network-engineering-portfolio/
 The portfolio currently includes **three documented hands-on networking projects**, covering enterprise switching, multi-area routing, Layer 2 redundancy, and structured troubleshooting.
 
 Additional projects focused on network security, advanced routing, automation, and enterprise infrastructure are planned.
+
+Planned directories represent future areas of portfolio development and will be added as projects are completed.
 
 ---
 
