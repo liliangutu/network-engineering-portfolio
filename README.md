@@ -98,6 +98,23 @@ Key features:
 
 ---
 
+### 04 — Layer 2 Security
+
+**Technologies:** Port Security, BPDU Guard, DHCP Snooping, Dynamic ARP Inspection (DAI)
+
+Implemented and tested Layer 2 security mechanisms on a Cisco Catalyst 2960 switch using Cisco Packet Tracer.
+
+- Configured Port Security with sticky MAC learning and violation handling.
+- Implemented PortFast and BPDU Guard on access ports.
+- Configured DHCP Snooping to prevent unauthorized DHCP server responses.
+- Verified DHCP Snooping bindings and legitimate DHCP address assignment.
+- Configured Dynamic ARP Inspection on VLAN 10.
+- Documented verification results and Packet Tracer simulation limitations.
+
+**[View Project](01-switching/03-layer2-security)**
+
+---
+
 ## Technology Areas
 
 The portfolio is organized around several network engineering disciplines:
