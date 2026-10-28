@@ -14,18 +14,7 @@ The lab was implemented and tested using Cisco Packet Tracer 8.2.0 and Cisco 291
 
 ## Network Topology
 
-```text
-Headquarters                                      Branch Office
-
-    PC1                                               PC2
-     |                                                 |
-    SW1                                               SW2
-     |                                                 |
-     R1 ---------------- ISP -------------------------- R2
-     |                                                 |
-     +================ GRE Tunnel =====================+
-                    Protected by IPsec
-```
+![GRE over IPsec VPN Network Topology](topology.png)
 
 ## IP Addressing
 
