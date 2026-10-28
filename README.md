@@ -115,6 +115,26 @@ Implemented and tested Layer 2 security mechanisms on a Cisco Catalyst 2960 swit
 
 ---
 
+### 05 — Site-to-Site GRE over IPsec VPN with OSPF
+
+**Technologies:** GRE, IPsec, IKEv1, ESP, OSPF, Crypto Maps
+
+Implemented a secure site-to-site VPN connecting Headquarters and Branch networks through a simulated ISP.
+
+- Configured GRE tunneling between Cisco 2911 routers.
+- Established OSPF adjacency and dynamic route exchange over GRE.
+- Implemented IKEv1 and IPsec using AES encryption.
+- Configured Crypto ACLs and Crypto Maps to protect GRE traffic.
+- Verified VPN operation using IKE and IPsec Security Associations.
+- Confirmed encrypted traffic through increasing IPsec packet counters.
+- Observed temporary OSPF reconvergence during VPN activation.
+
+**Verification:** OSPF FULL, IKE QM_IDLE, IPsec ACTIVE, successful end-to-end connectivity.
+
+[View Project](03-vpn/01-gre-over-ipsec-vpn/)
+
+---
+
 ## Technology Areas
 
 The portfolio is organized around several network engineering disciplines:
