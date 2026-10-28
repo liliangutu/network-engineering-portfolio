@@ -136,6 +136,47 @@ The encryption and decryption counters increased when additional traffic was gen
 
 This confirmed that GRE traffic was being protected by IPsec.
 
+## Verification Evidence
+
+The following screenshots demonstrate the successful operation of the GRE over IPsec VPN with OSPF dynamic routing.
+
+### 1. OSPF Neighbor Adjacency
+
+![OSPF Neighbor Verification](verification/ospf-neighbor.png)
+
+The `show ip ospf neighbor` command confirms that R1 and R2 established a FULL OSPF adjacency through the GRE Tunnel0 interface.
+
+This verifies that dynamic routing operates successfully between the Headquarters and Branch networks.
+
+### 2. IKEv1 Security Association
+
+![IKEv1 Security Association](verification/ike-sa.png)
+
+The `show crypto isakmp sa` command confirms successful IKEv1 negotiation between the VPN peers.
+
+The `QM_IDLE` state and `ACTIVE` status indicate an established IKE Security Association.
+
+### 3. IPsec Encryption and Decryption
+
+![IPsec Security Association](verification/ipsec-sa.png)
+
+The `show crypto ipsec sa` command confirms that GRE traffic is protected by IPsec.
+
+The following packet counters were observed on R1:
+
+| Metric | Initial Verification | Final Verification |
+|---|---:|---:|
+| Packets Encrypted | 30 | 362 |
+| Packets Decrypted | 28 | 358 |
+| Send Errors | 0 | 0 |
+| Receive Errors | 0 | 0 |
+
+The increasing encryption and decryption counters confirm that traffic is being processed by IPsec.
+
+The IPsec Security Associations use AES encryption and HMAC-SHA-1 integrity protection.
+
+**Result: All VPN verification tests passed successfully.**
+
 ## OSPF Reconvergence Observation
 
 During IPsec activation, a temporary OSPF reconvergence was observed.
