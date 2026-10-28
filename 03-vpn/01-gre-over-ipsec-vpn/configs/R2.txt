@@ -1,0 +1,91 @@
+```cisco
+!
+! SITE-TO-SITE GRE OVER IPSEC VPN WITH OSPF
+! Device: R2 - Branch Office
+! Platform: Cisco 2911
+! Simulator: Cisco Packet Tracer 8.2.0
+!
+
+hostname R2
+
+ip cef
+
+!
+! SECURITY LICENSE
+!
+license boot module c2900 technology-package securityk9
+
+!
+! IKEv1 PHASE 1
+!
+crypto isakmp policy 10
+ encr aes
+ authentication pre-share
+ group 2
+
+!
+! PRE-SHARED KEY
+! Replace the placeholder with the same secret on both routers.
+!
+crypto isakmp key REPLACE_WITH_STRONG_PSK address 203.0.113.1
+
+!
+! IPSEC PHASE 2
+!
+crypto ipsec transform-set VPN-SET esp-aes esp-sha-hmac
+
+!
+! CRYPTO MAP
+!
+crypto map VPN-MAP 10 ipsec-isakmp
+ set peer 203.0.113.1
+ set transform-set VPN-SET
+ match address VPN-TRAFFIC
+
+!
+! GRE TUNNEL
+!
+interface Tunnel0
+ description GRE-TO-HEADQUARTERS
+ ip address 10.10.10.2 255.255.255.252
+ mtu 1476
+ tunnel source GigabitEthernet0/1
+ tunnel destination 203.0.113.1
+
+!
+! BRANCH LAN
+!
+interface GigabitEthernet0/0
+ description LAN-BRANCH
+ ip address 192.168.20.1 255.255.255.0
+
+!
+! WAN CONNECTION
+!
+interface GigabitEthernet0/1
+ description WAN-TO-ISP
+ ip address 198.51.100.2 255.255.255.252
+ crypto map VPN-MAP
+
+!
+! OSPF DYNAMIC ROUTING
+!
+router ospf 1
+ router-id 2.2.2.2
+ log-adjacency-changes
+ network 10.10.10.0 0.0.0.3 area 0
+ network 192.168.20.0 0.0.0.255 area 0
+
+!
+! DEFAULT ROUTE
+!
+ip route 0.0.0.0 0.0.0.0 198.51.100.1
+
+!
+! IPSEC INTERESTING TRAFFIC
+!
+ip access-list extended VPN-TRAFFIC
+ permit gre host 198.51.100.2 host 203.0.113.1
+
+end
+```
