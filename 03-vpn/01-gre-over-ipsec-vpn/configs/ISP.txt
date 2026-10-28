@@ -1,0 +1,40 @@
+```cisco
+!
+! SITE-TO-SITE GRE OVER IPSEC VPN WITH OSPF
+! Device: ISP - Simulated Service Provider
+! Platform: Cisco 2911
+! Simulator: Cisco Packet Tracer 8.2.0
+!
+
+hostname ISP
+
+ip cef
+
+!
+! WAN CONNECTION TO HEADQUARTERS
+!
+interface GigabitEthernet0/0
+ description WAN-TO-R1
+ ip address 203.0.113.2 255.255.255.252
+ no shutdown
+
+!
+! WAN CONNECTION TO BRANCH
+!
+interface GigabitEthernet0/1
+ description WAN-TO-R2
+ ip address 198.51.100.1 255.255.255.252
+ no shutdown
+
+!
+! ROUTING
+!
+! Both WAN networks are directly connected.
+! No static routes or dynamic routing protocols are required.
+!
+! The ISP does not participate in GRE, OSPF, or IPsec.
+! GRE and IPsec are configured only on R1 and R2.
+!
+
+end
+```
